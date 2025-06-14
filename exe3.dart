@@ -1,23 +1,25 @@
 
 class Produto {
-  String _codigo;
-  String _nome;
-  double _preco;
-  int serie;
-  bool descontado;
-  double desconto;
+  late String _codigo;
+  late String _nome;
+  late double _preco;
+  late int serie;
+  late bool descontado;
+  late double desconto;
   static int totalProdutos = 0;
 
-  Produto({
+  Produto();
+
+  Produto.criar({
     required String codigo,
     required String nome,
     required double preco,
   })  : serie = totalProdutos + 1,
         descontado = false,
-        desconto = 0,
-        _codigo = codigo,
-        _nome = nome,
-        _preco = preco {
+        desconto = 0 {
+    _codigo = codigo;
+    _nome = nome;
+    _preco = preco;
     totalProdutos++;
   }
 
@@ -63,14 +65,14 @@ class Produto {
 
 void main() {
 
-  var produto = Produto(codigo: '777', nome: 'Teclado Mecânico', preco: 350.0);
+  var produto = Produto.criar(codigo: '777', nome: 'Teclado Mecânico', preco: 350.0);
 
   // Tentar definir um preço inválido
   produto.novoPreco = -50;
 
   // Exibir detalhes (deve mostrar o preço original)
   print('Preço atual: R\$ ${produto.preco}'); // Usando o getter
-  
+
   // Tentar definir um preço válido
   produto.novoPreco = 400.0;
   print('Preço atualizado: R\$ ${produto.preco}'); // Usando o getter
