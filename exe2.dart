@@ -16,19 +16,6 @@ class Produto {
     totalProdutos++;
   }
 
-
-  String getCodigo() {
-    return this.codigo;
-  }
-
-  String getNome() {
-    return this.nome;
-  }
-
-  double getPreco() {
-    return this.preco;
-  }
-
   void exibirDetalhes() {
     print("--- Produto $serie ---\nCodigo: $codigo\nNome: $nome\nPreco: $preco reais");
     if(descontado) 
@@ -37,10 +24,15 @@ class Produto {
   }
 
   aplicarDesconto(double percentual) {
-    double desconto = 1 - percentual/100;
-    this.preco = preco * desconto;
-    this.descontado = true;
-    this.desconto = percentual;
+    if(percentual > 0) {
+      double desconto = 1 - percentual/100;
+      this.preco = preco * desconto;
+      this.descontado = true;
+      this.desconto = percentual;
+    }
+    else {
+      print("Erro: percentual nao pode ser negativo. Valor original mantido");
+    }
   }
 
   static void exibirTotalProdutos() {

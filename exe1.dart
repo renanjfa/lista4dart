@@ -14,19 +14,6 @@ class Produto {
     numeroSerie++;
   }
 
-
-  String getCodigo() {
-    return this.codigo;
-  }
-
-  String getNome() {
-    return this.nome;
-  }
-
-  double getPreco() {
-    return this.preco;
-  }
-
   void printProduto() {
     print("--- Produto $serie ---\nCodigo: $codigo\nNome: $nome\nPreco: $preco reais\n");
   }
